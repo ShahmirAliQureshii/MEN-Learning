@@ -7,16 +7,12 @@ app.set("view engine", "ejs");
 
 app.use(morgan('dev'));
 
-app.use((req, res, next)=>{
-    console.log("This is middleware");
-    const a = 2
-    const b = 4;
+app.get('/',(req, res, next)=>{
+    const a = 2;
+    const b = 3;
     console.log(a+b);
-    return next();
-
-})
-
-app.get('/',(req,res)=>{
+    next();
+},(req,res)=>{
     res.send("Bas bhai thak gaya")
 })
 app.get("/persons",(req, res)=>{
